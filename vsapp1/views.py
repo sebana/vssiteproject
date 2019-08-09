@@ -9,11 +9,12 @@ def home(request):
     return render(request, 'home.html')
 
 def game(request):
+        gendercode = int(request.POST['gender'])
         pos_people=[]
         just_people=[]
         neg_people=[]
-        man=Person.objects.filter(gender=1).order_by('?')[:32]
-        for i in man:
+        people=Person.objects.filter(gender=gendercode).order_by('?')[:32]
+        for i in people:
             if i.degree==1:
                 pos_people.append(i)
             if i.degree==0:
@@ -21,9 +22,9 @@ def game(request):
             if i.degree==-1:
                 neg_people.append(i)
 
-        pos_adj=Adjective.objects.filter(degree=1).order_by('?')[:len(neg_people)]
-        just_adj=Adjective.objects.filter(degree=0).order_by('?')[:len(just_people)]
-        neg_adj=Adjective.objects.filter(degree=-1).order_by('?')[:len(pos_people)]
+        pos_adj=Adjective.objects.filter(degree=1,gender=gendercode).order_by('?')[:len(neg_people)]
+        just_adj=Adjective.objects.filter(degree=0,gender=gendercode).order_by('?')[:len(just_people)]
+        neg_adj=Adjective.objects.filter(degree=-1,gender=gendercode).order_by('?')[:len(pos_people)]
 
         pos=[]
         just=[]
@@ -40,7 +41,7 @@ def game(request):
         c=0
         candidate=[]
 
-        for i in man:
+        for i in people:
            if i.degree == -1:
               candidate.append([pos[a], i.name])
               a+=1
@@ -78,8 +79,8 @@ def worldcup(request) : #남성 32명을 뽑는 함수이다.
         pos_people=[]
         just_people=[]
         neg_people=[]
-        man=Person.objects.filter(gender=1).order_by('?')[:32]
-        for i in man:
+        people=Person.objects.filter(gender=1).order_by('?')[:32]
+        for i in people:
             if i.degree==1:
                 pos_people.append(i)
             if i.degree==0:
