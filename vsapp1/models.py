@@ -11,6 +11,7 @@ class Person(models.Model):
 
 class Adjective(models.Model):
     phrase = models.TextField()
+    gender = models.ImageField()
     fav = models.IntegerField()
     degree = models.IntegerField()
     played = models.IntegerField()
