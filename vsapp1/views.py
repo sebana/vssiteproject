@@ -25,9 +25,6 @@ def data_import():
         person.image = ""
         person.degree = rdr[2]
         person.played = 0
-<<<<<<< HEAD
-        person.won = 0 #한 판 안에서 이긴 횟수. 
-=======
         person.won = 0
 
 def worldcup(request) : #남성 32명을 뽑는 함수이다.
@@ -81,4 +78,3 @@ def vote(request) :
         votelist=[]
         votelist.append(request.POST['winner'])
         return redirect('/')
->>>>>>> c3e5ecd4ff2d4677624f7e860e877c4a9db2c3f9
