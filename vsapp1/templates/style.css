@@ -89,6 +89,7 @@ div{
     background: orange;
     margin: 30px;
     padding: 10px;
+    cursor: pointer;
 }
 
 #vs{
@@ -104,6 +105,7 @@ div{
     background: blue;
     margin: 30px;
     padding: 10px;
+    cursor: pointer;
 }
 
 /*result.html에 해당됨.*/
