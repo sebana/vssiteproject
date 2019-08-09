@@ -1,0 +1,24 @@
+<HTML>
+<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<style>
+    div {margin-bottom:1000px;}
+    body {overflow:hidden}
+</style>
+<script>
+    function fnMove(seq){
+        var offset = $("#div" + seq).offset();
+        $('html, body').animate({scrollTop : offset.top}, 400);
+    }
+</script>
+ <body >
+    <button onclick="fnMove('1')">div1로 이동</button>
+    <button onclick="fnMove('2')">div2로 이동</button>
+    <button onclick="fnMove('3')">div3로 이동</button>
+    <div id="div1">div1</div>
+    <div id="div2">div2</div>
+    <div id="div3">div3</div>
+ </body>
+</HTML>
+
+
+출처: https://cofs.tistory.com/191 [CofS]

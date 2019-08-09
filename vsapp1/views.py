@@ -8,7 +8,7 @@ def home(request):
     return render(request, 'home.html')
 
 def game(request):
-    return render(request, 'game.html')
+    return worldcup(request)
 
 def result(request):
     return render(request, 'result.html')

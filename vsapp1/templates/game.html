@@ -12,7 +12,9 @@
         <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel = "stylesheet" href = "style.css">
+        <link rel = "stylesheet" href = "game_style.css">
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
     </head>
     <body>
         <ul class="nav nav-tabs">
@@ -20,29 +22,28 @@
             <li role="presentation"><a href="statistics.html">통계</a></li>
         </ul>
 
-        <div id = "main_container" onclick = "left_win()">
-            <div id = "candidate1">
+        {% for candidate in real_candidate %}
+        <div id = "main_container">
+            <div id = "candidate1" onclick = "fnMove()">
                 <h1>Image1</h1> <br><br>
-                <h1>{{ candidate[index] }}</h1>
+                <h1>{{ candidate[0] }}</h1>
             </div>
 
             <div id = "vs">
                 <h1>VS   </h1>
             </div>
 
-            <div id = "candidate2" onclick = "right_win()">
+            <div id = "candidate2" onclick = "fnMove()">
                 <h1>Image2</h1> <br><br>
-                <h1>{{ candidate[index] }}</h1>
+                <h1>{{ candidate[1] }}</h1>
             </div>
         </div>
+        {% endfor %}
 
         <script>
-            function left_win(){
-                document.getElementById("candidate1")
-            }
-
-            function right_win(){
-                document.getElementById("candidate2")
+            function fnMove(seq){
+                var offset = $(this).next().offset();
+                $('html, body').animate({scrollTop : offset.top}, 400);
             }
         </script>
     </body>
