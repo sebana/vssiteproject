@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'vsapp1.apps.Vsapp1Config',
+    'django_extensions'
 ]
 
 MIDDLEWARE = [
