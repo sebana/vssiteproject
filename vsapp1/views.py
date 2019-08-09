@@ -8,6 +8,29 @@ def home(request):
     return render(request, 'home.html')
 
 def game(request):
+<<<<<<< HEAD
+=======
+    return render(request, 'game.html')
+
+def result(request):
+    return render(request, 'result.html')
+
+def data_import():
+    f = open('./person_data.csv', 'r', encoding='utf-8')
+    rdr = csv.reader(f)
+
+    for line in rdr:
+        person = Person()
+        person.name = rdr[0]
+        person.gender = rdr[1]
+        person.fav = 0 #영구적으로 통계자료 낼 때 쓰는거.
+        person.image = ""
+        person.degree = rdr[2]
+        person.played = 0
+        person.won = 0
+
+def worldcup(request) : #남성 32명을 뽑는 함수이다.
+>>>>>>> cf95179de86c1bfde372e2356fccb421029cef6d
         all_people = Person.objects.filter(gender = request.POST['choice']) #남성을 전부 받는다.
         people = random.sample(all_people, 32) #받은 남성 중에 32명을 뽑는다.                
         pos_people = people.objects.filter(degree = 1) #긍정적인 남성
