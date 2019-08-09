@@ -20,4 +20,6 @@ import vsapp1.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', vsapp1.views.home, name="home"),
+    path('game/', vsapp1.views.game, name = "game"),
+    path('result/', vsapp1.views.result, name = "result")
 ]

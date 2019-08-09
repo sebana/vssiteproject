@@ -20,20 +20,30 @@
             <li role="presentation"><a href="statistics.html">통계</a></li>
         </ul>
 
-        <div id = "main_container">
+        <div id = "main_container" onclick = "left_win()">
             <div id = "candidate1">
                 <h1>Image1</h1> <br><br>
-                <h1>Description1</h1>
+                <h1>{{ candidate[0] }}</h1>
             </div>
 
             <div id = "vs">
                 <h1>VS   </h1>
             </div>
 
-            <div id = "candidate2">
+            <div id = "candidate2" onclick = "right_win()">
                 <h1>Image2</h1> <br><br>
-                <h1>Description2</h1>
+                <h1>{{ candidate[1] }}</h1>
             </div>
         </div>
+
+        <script>
+            function left_win(){
+                document.getElementById("candidate1")
+            }
+
+            function right_win(){
+                document.getElementById("candidate2")
+            }
+        </script>
     </body>
 </html>
