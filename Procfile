@@ -1,1 +1,1 @@
-web: gunicorn vsapp1.wsgi --log-file -
+web: gunicorn vssiteproject.wsgi --log-file -
