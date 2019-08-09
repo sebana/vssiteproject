@@ -10,6 +10,9 @@ import django
 django.setup() 
 
 from vsapp1.models import Person
+from vsapp1.models import Adjective
+
+#사람 임포트
 f = open('vsapp1/scripts/data_person.csv', 'r', encoding='utf-8')
 rdr = csv.reader(f)
 
@@ -24,9 +27,26 @@ for line in rdr:
     person.won = 0
     person.save()
 
-# def run():
-#     import csv
-#     from vsapp1.models import Person
-#     f = open('data_person.csv', 'r', encoding='utf-8')
-#     rdr = csv.reader(f)
-#     print("success")
+
+#수식어 임포트
+f = open('vsapp1/scripts/adjectives_import_man.csv', 'r', encoding='euc-kr')
+rdr = csv.reader(f)
+
+for line in rdr:
+    adjective = Adjective()
+    adjective.phrase = line[0]
+    adjective.gender = 1
+    adjective.degree = line[1]
+    adjective.played = 0
+    adjective.won = 0
+
+f = open('vsapp1/scripts/adjectives_import_women.csv', 'r', encoding='utf-8')
+rdr = csv.reader(f)
+
+for line in rdr:
+    adjective = Adjective()
+    adjective.phrase = line[0]
+    adjective.gender = 2
+    adjective.degree = line[1]
+    adjective.played = 0
+    adjective.won = 0
