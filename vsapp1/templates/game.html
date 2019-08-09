@@ -23,11 +23,11 @@
             <li role="presentation"><a href="statistics.html">통계</a></li>
         </ul>
 
-        {% for cand in candidate %}
+        {% for x,y in candidate %}
         <div id = "main_container">
             <div id = "candidate1" onclick = "fnMove()">
                 <h1>Image1</h1> <br><br>
-                <h1>{{ cand }}</h1>
+                <h1>{{ x }}</h1>
             </div>
 
             <div id = "vs">
@@ -36,7 +36,7 @@
 
             <div id = "candidate2" onclick = "fnMove()">
                 <h1>Image2</h1> <br><br>
-                <h1>{{ cand }}</h1>
+                <h1>{{ y }}</h1>
             </div>
         </div>
         {% endfor %}

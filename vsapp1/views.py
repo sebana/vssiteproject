@@ -50,7 +50,11 @@ def game(request):
            if i.degree == 1:
               candidate.append([neg[c], i.name])
               c+=1
-        return render(request, 'game.html', {'candidate':candidate})
+        couple_cand = []
+        for i in range(0,len(candidate),2):
+                couple_cand.append([candidate[i],candidate[i+1]])
+
+        return render(request, 'game.html', {'candidate':couple_cand})
 
 def result(request):
     return render(request, 'result.html')
