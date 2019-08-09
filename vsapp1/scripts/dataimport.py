@@ -29,7 +29,7 @@ for line in rdr:
 
 
 #수식어 임포트
-f = open('vsapp1/scripts/adjectives_import_man.csv', 'r', encoding='euc-kr')
+f = open('vsapp1/scripts/adjectives_import_man.csv', 'r', encoding='utf-8')
 rdr = csv.reader(f)
 
 for line in rdr:
