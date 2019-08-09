@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang = "ko" dir = "ltr">
     <head>
@@ -12,7 +13,7 @@
         <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel = "stylesheet" href = "style.css">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
     </head>
     <body>
         <ul class="nav nav-tabs">

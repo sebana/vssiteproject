@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Person, Adjective
 import csv
 import random
@@ -8,7 +9,48 @@ def home(request):
     return render(request, 'home.html')
 
 def game(request):
-    return worldcup(request)
+        pos_people=[]
+        just_people=[]
+        neg_people=[]
+        man=Person.objects.filter(gender=1).order_by('?')[:32]
+        for i in man:
+            if i.degree==1:
+                pos_people.append(i)
+            if i.degree==0:
+                just_people.append(i)
+            if i.degree==-1:
+                neg_people.append(i)
+
+        pos_adj=Adjective.objects.filter(degree=1).order_by('?')[:len(neg_people)]
+        just_adj=Adjective.objects.filter(degree=0).order_by('?')[:len(just_people)]
+        neg_adj=Adjective.objects.filter(degree=-1).order_by('?')[:len(pos_people)]
+
+        pos=[]
+        just=[]
+        neg=[]   
+
+        for i in pos_adj:
+           pos.append(i.phrase)
+        for i in just_adj:
+           just.append(i.phrase)
+        for i in neg_adj:
+           neg.append(i.phrase)
+        a=0   
+        b=0
+        c=0
+        candidate=[]
+
+        for i in man:
+           if i.degree == -1:
+              candidate.append([pos[a], i.name])
+              a+=1
+           if i.degree == 0:
+              candidate.append([just[b], i.name])
+              b+=1
+           if i.degree == 1:
+              candidate.append([neg[c], i.name])
+              c+=1
+        return render(request, 'game.html', {'candidate':candidate})
 
 def result(request):
     return render(request, 'result.html')
@@ -27,15 +69,24 @@ def data_import():
         person.played = 0
         person.won = 0
 
+"""
 def worldcup(request) : #남성 32명을 뽑는 함수이다.
-        all_people = Person.objects.filter(gender = request.POST['choice']) #남성을 전부 받는다.
-        people = random.sample(all_people, 32) #받은 남성 중에 32명을 뽑는다.                
-        pos_people = people.objects.filter(degree = 1) #긍정적인 남성
-        just_people = people.objects.filter(degree = 0) #보통의 남성
-        neg_people = people.objects.filter(degree = -1) #부정적인 남성
+        pos_people=[]
+        just_people=[]
+        neg_people=[]
+        man=Person.objects.filter(gender=1).order_by('?')[:32]
+        for i in man:
+            if i.degree==1:
+                pos_people.append(i)
+            if i.degree==0:
+                just_people.append(i)
+            if i.degree==-1:
+                neg_people.append(i)
+        
         pos_adj = random.sample(Adjective.objects.filter(gender = 1, degree = 1), len(neg_people)) #부정적인 남성의 수만큼 긍정적인 남성수식어를 뽑는다.
         just_adj = random.sample(Adjective.objects.filter(gender = 1, degree = 0), len(just_people)) #보통의 남성의 수만큼 보통의 남성수식어를 뽑는다.
         neg_adj = random.sample(Adjective.objects.filter(gender = 1, degree = 1), len(pos_people)) #긍정적인 남성의 수만큼 부정적인 남성수식어를 뽑는다.
+        
         candidate = []
         pospeople=[]
         negpeople=[]
@@ -72,7 +123,7 @@ def worldcup(request) : #남성 32명을 뽑는 함수이다.
         for i in range(0,16):
                 real_candidate.append([candidate[i*2],candidate[i*2+1]]) #이 행위를 통해 32강의 대진표가 완성되게 된다.
         return render(request, 'game.html', {'real_candidate':real_candidate}) #candidate는 ['도박하는 박보검', '10억 버는 김제동' ... ]의 31까지의 인덱스를 가진 리스트이다.
-
+"""
 #포스트를 사용해서 16개의 인자를 받는다.
 
 def result(request):
