@@ -2,7 +2,7 @@
 <html lang = "ko" dir = "ltr">
     <head>
         <meta charset = "utf-8">
-        <title>Animated Login Form</title>
+        <title>이상한 월드컵!</title>
         <!-- 합쳐지고 최소화된 최신 CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 
@@ -16,16 +16,17 @@
     </head>
     <body>
         <ul class="nav nav-tabs">
-            <li role="presentation" class="active"><a href="home.html">Home</a></li>
-            <li role="presentation"><a href="game.html">Game!</a></li>
-            <li role="presentation"><a href="result.html">Result</a></li>
-            <li role="presentation"><a href="statistics.html">Statistics</a></li>
+            <li role="presentation" class="active"><a href="home.html">메인</a></li>
+            <li role="presentation"><a href="statistics.html">통계</a></li>
         </ul>
-        <form class = "box" action = "home.html" method = "post">
-            <h1>Login</h1>
-            <input type = "text" name = "id" placeholder = "Username">
-            <input type = "password" name = "pw" placeholder = "Password">
-            <input type = "submit" name = "submit" placeholder = "Login">
+        <form class = "box" action = "game.html" method = "post">
+            <h1>사용자 정보를 입력해주세요</h1>
+            <input type = "text" name = "id" placeholder = "원하시는 닉네임을 입력하세요.">
+
+            <input type="radio" name="gender" value="male" checked = "checked"><Label>남자</Label>
+            <input type="radio" name="gender" value="female"><Label>여자</Label>
+
+            <input type = "submit" name = "submit" placeholder = "submit">
         </form>
     </body>
 </html>
