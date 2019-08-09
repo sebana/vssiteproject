@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from .models import Person
 import csv
+import random
 
 # Create your views here.
 
@@ -66,3 +67,9 @@ def worldcup(request) : #남성 32명을 뽑는 함수이다.
 
 #일단 candidate를 통해서 32개의 인자를 가진 리스트를 만드는 데에는 성공했지만 그 다음 투표를 진행시킬 때 새 함수를 짜야 하는데
 #그런데 그 새 함수에서 candidate라는 말을 사용할 수 없게 된다. 왜냐하면 모델에 저장되어 있지 않기 때문이다.
+
+def vote(request) :
+        league = 32
+        votelist=[]
+        votelist.append(request.POST['winner'])
+        return redirect('/')
