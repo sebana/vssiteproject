@@ -8,8 +8,6 @@ def home(request):
     return render(request, 'home.html')
 
 def game(request):
-<<<<<<< HEAD
-=======
     return render(request, 'game.html')
 
 def result(request):
@@ -30,7 +28,6 @@ def data_import():
         person.won = 0
 
 def worldcup(request) : #남성 32명을 뽑는 함수이다.
->>>>>>> cf95179de86c1bfde372e2356fccb421029cef6d
         all_people = Person.objects.filter(gender = request.POST['choice']) #남성을 전부 받는다.
         people = random.sample(all_people, 32) #받은 남성 중에 32명을 뽑는다.                
         pos_people = people.objects.filter(degree = 1) #긍정적인 남성
@@ -74,49 +71,6 @@ def worldcup(request) : #남성 32명을 뽑는 함수이다.
         real_candidate=[]
         for i in range(0,16):
                 real_candidate.append([candidate[i*2],candidate[i*2+1]]) #이 행위를 통해 32강의 대진표가 완성되게 된다.
-                league=32
-        while league!=1:
-                if league==32:
-                        real_candidate16=[]
-                        candidate16=[]
-                        candidate16.append(request.POST['winner'])
-                        random.shuffle(candidate16)
-                        for i in range(0,8):
-                                real_candidate16.append([candidate16[i*2],candidate16[i*2+1]])
-                        league=16
-                if league==16:
-                        real_candidate8=[]
-                        candidate8=[]
-                        candidate8.append(request.POST['winner'])
-                        random.shuffle(candidate8)
-                        for i in range(0,4):
-                                real_candidate8.append([candidate8[i*2],candidate8[i*2+1]])
-                        league=8
-                if league==8:
-                        real_candidate4=[]
-                        candidate4=[]
-                        candidate4.append(request.POST['winner'])
-                        random.shuffle(candidate4)
-                        for i in range(0,4):
-                                real_candidate4.append([candidate4[i*2],candidate4[i*2+1]])
-                        league=4
-                if league==4:
-                        real_candidate2=[]
-                        candidate2=[]
-                        candidate2.append(request.POST['winner'])
-                        random.shuffle(candidate2)
-                        for i in range(0,2):
-                                real_candidate2.append([candidate2[i*2],candidate2[i*2+1]])
-                        league=2
-                if league==2:
-                        real_candidate1=[]
-                        candidate1=[]
-                        candidate1.append(request.POST['winner'])
-                        random.shuffle(candidate1)
-                        for i in range(0,1):
-                                real_candidate1.append([candidate2[i*2],candidate2[i*2+1]])
-                        league=1
-                        
         return render(request, 'game.html', {'real_candidate':real_candidate}) #candidate는 ['도박하는 박보검', '10억 버는 김제동' ... ]의 31까지의 인덱스를 가진 리스트이다.
 
 #포스트를 사용해서 16개의 인자를 받는다.
