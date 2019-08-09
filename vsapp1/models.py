@@ -9,10 +9,16 @@ class Person(models.Model):
     played = models.IntegerField()
     won = models.IntegerField()
 
+    def __str__(self):
+        return self.name
+
 class Adjective(models.Model):
     phrase = models.TextField()
-    gender = models.ImageField()
+    gender = models.IntegerField()
     fav = models.IntegerField()
     degree = models.IntegerField()
     played = models.IntegerField()
     won = models.IntegerField()
+
+    def __str__(self):
+        return self.phrase

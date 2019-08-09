@@ -39,6 +39,8 @@ for line in rdr:
     adjective.degree = line[1]
     adjective.played = 0
     adjective.won = 0
+    adjective.fav = 0
+    adjective.save()
 
 f = open('vsapp1/scripts/adjectives_import_women.csv', 'r', encoding='utf-8')
 rdr = csv.reader(f)
@@ -50,3 +52,5 @@ for line in rdr:
     adjective.degree = line[1]
     adjective.played = 0
     adjective.won = 0
+    adjective.fav = 0
+    adjective.save()
